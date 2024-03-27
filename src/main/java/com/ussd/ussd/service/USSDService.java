@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class USSDService {
-
     private List<USSDNode> ussdNodes;
 
     @PostConstruct

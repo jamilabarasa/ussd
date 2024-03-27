@@ -11,9 +11,11 @@ import java.util.List;
 @RequestMapping("api/ussd")
 public class USSDController {
 
-
     @Autowired
     private USSDService ussdService;
+
+    // TODO best practice for rest controllers is to use nouns instead of verbs
+    // reference document - https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
 
     @GetMapping("/loadRootNodes")
     public List<USSDNode> loadRootNodes() {
