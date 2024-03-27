@@ -28,13 +28,20 @@ public class USSDService {
         }
     }
 
+    //function to load root nodes
     public List<USSDNode> loadRootNodes() {
+
+        // TODO: if response exceeds a certain length,show some  add More to the list,for user to see the remaining items in list
+
         return ussdNodes.stream()
                 .filter(node -> node.getParent() == -1)
                 .collect(Collectors.toList());
     }
 
+    //function to load child nodes by perent id
     public List<USSDNode> loadChildrenByParent(int parentId) {
+        // TODO: if response exceeds a certain length,show some  add More to the list,for user to see the remaining items in list
+        // TODO: add option for back ,so we can go back to the previouse node 
 
 //        load children if it is not terminal,and perform the necessary action if it is
 //        terminal
@@ -51,6 +58,7 @@ public class USSDService {
 
 
 
+    //function to resolve ussd string
 
     public List<USSDNode> resolveUssdString(String ussdString) {
         // Remove the first five characters (USSD code,*544*) including the first start and the last character (#)
