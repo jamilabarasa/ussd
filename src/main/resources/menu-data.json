@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "display": "Buy Airtime",
+    "parent": -1,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 2,
+    "display": "Check Balance",
+    "parent": -1,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 3,
+    "display": "My Account",
+    "parent": -1,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 4,
+    "display": "Buy for My Number",
+    "parent": 1,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 5,
+    "display": "Buy for Another Number",
+    "parent": 1,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 6,
+    "display": "Prepaid Balance",
+    "parent": 2,
+    "condition": null,
+    "url": "",
+    "terminal": true
+  },
+  {
+    "id": 7,
+    "display": "Postpaid Balance",
+    "parent": 2,
+    "condition": null,
+    "url": "",
+    "terminal": true
+  },
+  {
+    "id": 8,
+    "display": "My Tariff",
+    "parent": 3,
+    "condition": null,
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 9,
+    "display": "PUK",
+    "parent": 3,
+    "condition": null,
+    "url": "",
+    "terminal": true
+  },
+  {
+    "id": 10,
+    "display": "SIM Swap",
+    "parent": 3,
+    "condition": null,
+    "url": "",
+    "terminal": true
+  }
+]
