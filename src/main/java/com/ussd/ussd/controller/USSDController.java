@@ -3,12 +3,9 @@ package com.ussd.ussd.controller;
 import com.ussd.ussd.model.USSDNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.USSDService;
+import com.ussd.ussd.service.USSDService;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/ussd")
