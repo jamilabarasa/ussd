@@ -17,17 +17,17 @@ public class USSDController {
     // TODO best practice for rest controllers is to use nouns instead of verbs
     // reference document - https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
 
-    @GetMapping("/loadRootNodes")
+    @GetMapping("/rootNodes")
     public List<USSDNode> loadRootNodes() {
         return ussdService.loadRootNodes();
     }
 
-    @GetMapping("/loadChildrenByParent/{parentId}")
+    @GetMapping("/childNodes/{parentId}")
     public List<USSDNode> loadChildrenByParent(@PathVariable int parentId) {
         return ussdService.loadChildrenByParent(parentId);
     }
 
-    @PostMapping("/resolveUssdString")
+    @PostMapping("/ussdString")
     public List<USSDNode> resolveUssdString(@RequestBody String ussdString) {
         return ussdService.resolveUssdString(ussdString);
     }

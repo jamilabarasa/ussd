@@ -37,7 +37,7 @@ public class USSDService {
                 .collect(Collectors.toList());
     }
 
-    //function to load child nodes by perent id
+    //function to load child nodes by parent id
     public List<USSDNode> loadChildrenByParent(int parentId) {
         // TODO: if response exceeds a certain length,show some  add More to the list,for user to see the remaining items in list
         // TODO: add option for back ,so we can go back to the previouse node 
