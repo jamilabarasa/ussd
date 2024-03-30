@@ -1,14 +1,13 @@
 package com.ussd.ussd.controller;
 
 import com.ussd.ussd.model.USSDCallbackRequest;
-import com.ussd.ussd.model.USSDNode;
+import com.ussd.ussd.service.USSDService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
-import com.ussd.ussd.service.USSDService;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/ussd")

@@ -1,5 +1,9 @@
 package com.ussd.ussd.model;
 
+/**
+ * Represents the callback request from the telco
+ * To be changed depending on what each telco request looks like
+ */
 public class USSDCallbackRequest {
     private String sessionId;
     private String serviceCode;

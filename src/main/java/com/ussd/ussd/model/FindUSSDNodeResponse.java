@@ -1,12 +1,12 @@
 package com.ussd.ussd.model;
 
-import com.ussd.ussd.model.enumerations.FindUSSDNodeFailureReason;
+import com.ussd.ussd.model.enumerations.FindUSSDNodeTerminationReason;
 
-public class USSDNodeWrapper {
+public class FindUSSDNodeResponse {
     private USSDNode ussdNode;
-    private FindUSSDNodeFailureReason reason;
+    private FindUSSDNodeTerminationReason reason;
 
-    public USSDNodeWrapper(USSDNode ussdNode, FindUSSDNodeFailureReason reason) {
+    public FindUSSDNodeResponse(USSDNode ussdNode, FindUSSDNodeTerminationReason reason) {
         this.ussdNode = ussdNode;
         this.reason = reason;
     }
@@ -20,11 +20,11 @@ public class USSDNodeWrapper {
     }
 
 
-    public FindUSSDNodeFailureReason getReason() {
+    public FindUSSDNodeTerminationReason getReason() {
         return reason;
     }
 
-    public void setReason(FindUSSDNodeFailureReason reason) {
+    public void setReason(FindUSSDNodeTerminationReason reason) {
         this.reason = reason;
     }
 
