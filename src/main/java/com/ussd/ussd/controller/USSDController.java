@@ -1,37 +1,29 @@
 package com.ussd.ussd.controller;
 
+import com.ussd.ussd.model.USSDCallbackRequest;
 import com.ussd.ussd.model.USSDNode;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import com.ussd.ussd.service.USSDService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/ussd")
 public class USSDController {
 
-    @Autowired
-    private USSDService ussdService;
+    private final USSDService ussdService;
+    private final Logger logger = LoggerFactory.getLogger(USSDController.class);
 
-    // TODO best practice for rest controllers is to use nouns instead of verbs
-    // reference document - https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
-
-    @GetMapping("/rootNodes")
-    public List<USSDNode> loadRootNodes() {
-        return ussdService.loadRootNodes();
+    public USSDController(USSDService ussdService) {
+        this.ussdService = ussdService;
     }
 
-    @GetMapping("/childNodes/{parentId}")
-    public List<USSDNode> loadChildrenByParent(@PathVariable int parentId) {
-        return ussdService.loadChildrenByParent(parentId);
+    @PostMapping()
+    public String resolveUssdString(@RequestBody USSDCallbackRequest callbackRequest) {
+        logger.debug("Request to process callbackRequest", callbackRequest);
+        return ussdService.resolveUssdString(callbackRequest);
     }
-
-    @PostMapping("/ussdString")
-    public List<USSDNode> resolveUssdString(@RequestBody String ussdString) {
-        return ussdService.resolveUssdString(ussdString);
-    }
-
-
-
 }

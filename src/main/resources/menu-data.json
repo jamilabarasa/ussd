@@ -5,7 +5,8 @@
     "parent": -1,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 1
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "parent": -1,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 2
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "parent": -1,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 3
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "parent": 1,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 1
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "parent": 1,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 2
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "parent": 2,
     "condition": null,
     "url": "",
-    "terminal": true
+    "terminal": true,
+    "rank": 1
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "parent": 2,
     "condition": null,
     "url": "",
-    "terminal": true
+    "terminal": true,
+    "rank": 2
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "parent": 3,
     "condition": null,
     "url": "",
-    "terminal": false
+    "terminal": false,
+    "rank": 1
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "parent": 3,
     "condition": null,
     "url": "",
-    "terminal": true
+    "terminal": true,
+    "rank": 2
   },
   {
     "id": 10,
@@ -77,6 +86,23 @@
     "parent": 3,
     "condition": null,
     "url": "",
-    "terminal": true
+    "terminal": true,
+    "rank": 3
+  },
+  {
+    "id": 0,
+    "display": "Back",
+    "parent": 0,
+    "condition": "",
+    "url": "",
+    "terminal": false
+  },
+  {
+    "id": 98,
+    "display": "More",
+    "parent": 0,
+    "condition": "",
+    "url": "",
+    "terminal": false
   }
 ]
