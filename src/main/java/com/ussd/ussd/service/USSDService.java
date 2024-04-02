@@ -116,6 +116,103 @@ public class USSDService {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public String resolveUssdString(USSDCallbackRequest callbackRequest) {
+        String response = null;
+        log.debug("transaction|phoneNumber={}|sessionId={}|ussdString={}|about to resolve ussd string",
+                callbackRequest.getPhoneNumber(), callbackRequest.getSessionId(), callbackRequest.getText());
+
+        List<USSDNode> nodes = getNodes(callbackRequest.getText());
+        log.debug("transaction|phoneNumber={}|sessionId={}|ussdString={}|extracted {} nodes",
+                callbackRequest.getPhoneNumber(), callbackRequest.getSessionId(), callbackRequest.getText(), nodes.size());
+
+        if (nodes.isEmpty()) {
+            response = "END this menu has not yet been populated, please try again later";
+        } else if (nodes.size() == 1) {
+            // node is terminal and should have a way to fetch the data
+            return "END resolving my message";
+        } else {
+            StringBuilder sb = new StringBuilder("CON Select an option below\n");
+
+            for (USSDNode ussdNode : nodes) {
+                sb.append(ussdNode.getRank()).append(". ").append(ussdNode.getDisplay()).append("\n");
+            }
+
+            response = sb.toString();
+        }
+
+        log.debug("transaction|phoneNumber={}|sessionId={}|ussdString={}|about to respond to user",
+                callbackRequest.getPhoneNumber(), callbackRequest.getSessionId(), callbackRequest.getText());
+        return response;
+    }
+
+    public List<USSDNode> getNodes(String text) {
+        List<USSDNode> nodes = new ArrayList<>();
+        if (text == null || text.isEmpty()) {
+            return loadRootNodes();
+        }
+
+        FindUSSDNodeResponse nodeWrapper = findNodeByUSSDString(text);
+
+        return switch (nodeWrapper.getReason()) {
+            case CHILDREN_NODES_NOT_FOUND -> nodes;
+            case NODE_IS_TERMINAL -> {
+                nodes.add(nodeWrapper.getUssdNode());
+                yield nodes;
+            }
+            default -> loadChildrenByParent(nodeWrapper.getUssdNode().getId());
+        };
+
+    }
+
+    public FindUSSDNodeResponse findNodeByUSSDString(String ussdString) {
+        String[] nodes = ussdString.split("\\*");
+
+        USSDNode selectedNode = null;
+        FindUSSDNodeTerminationReason reason = FindUSSDNodeTerminationReason.NONE;
+
+        for (int i = 0; i < nodes.length; i++) {
+            boolean success = true;
+            Integer rank = Integer.parseInt(nodes[i]);
+
+            List<USSDNode> levelNodes;
+            if (i == 0) {
+                levelNodes = loadRootNodes();
+            } else {
+                levelNodes = loadChildrenByParent(selectedNode.getId());
+            }
+
+            Optional<USSDNode> optionalUSSDNode = levelNodes
+                    .stream()
+                    .filter(node -> node.getRank().equals(rank))
+                    .findFirst();
+
+            if (optionalUSSDNode.isPresent()) {
+                selectedNode = optionalUSSDNode.get();
+            }
+
+            assert selectedNode != null;
+            if (selectedNode.isTerminal()) {
+                reason = FindUSSDNodeTerminationReason.NODE_IS_TERMINAL;
+                success = false;
+            } else {
+                List<USSDNode> children = loadChildrenByParent(selectedNode.getId());
+                if (children == null || children.isEmpty()) {
+                    reason = FindUSSDNodeTerminationReason.CHILDREN_NODES_NOT_FOUND;
+                    success = false;
+                }
+            }
+
+            if (!success) {
+                break;
+            }
+        }
+
+        return new FindUSSDNodeResponse(selectedNode, reason);
+    }
+
+>>>>>>> Stashed changes
     //function to find the node
     public boolean findNode(int nodeId, boolean first) {
 
