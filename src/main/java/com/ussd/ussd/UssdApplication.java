@@ -7,9 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.ussd.ussd"})
 public class UssdApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(UssdApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UssdApplication.class, args);
+    }
 
 }

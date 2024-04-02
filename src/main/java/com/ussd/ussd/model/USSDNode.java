@@ -2,18 +2,19 @@ package com.ussd.ussd.model;
 
 public class USSDNode {
 
-    private int id;
+    private Integer id;
     private String display;
     private Integer parent;
     private String condition;
     private String url;
     private boolean terminal;
+    private Integer rank;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,5 +56,26 @@ public class USSDNode {
 
     public void setTerminal(boolean terminal) {
         this.terminal = terminal;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    @Override
+    public String toString() {
+        return "USSDNode{" +
+                "id=" + id +
+                ", display='" + display + '\'' +
+                ", parent=" + parent +
+                ", condition='" + condition + '\'' +
+                ", url='" + url + '\'' +
+                ", terminal=" + terminal +
+                ", rank=" + rank +
+                '}';
     }
 }

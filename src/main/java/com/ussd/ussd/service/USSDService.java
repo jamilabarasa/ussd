@@ -2,18 +2,26 @@ package com.ussd.ussd.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ussd.ussd.model.FindUSSDNodeResponse;
+import com.ussd.ussd.model.USSDCallbackRequest;
 import com.ussd.ussd.model.USSDNode;
+import com.ussd.ussd.model.enumerations.FindUSSDNodeTerminationReason;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class USSDService {
     private List<USSDNode> ussdNodes;
+    private final Logger log = LoggerFactory.getLogger(USSDService.class);
 
     @PostConstruct
     private void init() {
@@ -54,7 +62,6 @@ public class USSDService {
                 .filter(node -> node.getParent() == parentId)
                 .collect(Collectors.toList());
     }
-
 
 
     //function to resolve ussd string
@@ -116,8 +123,6 @@ public class USSDService {
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public String resolveUssdString(USSDCallbackRequest callbackRequest) {
         String response = null;
         log.debug("transaction|phoneNumber={}|sessionId={}|ussdString={}|about to resolve ussd string",
@@ -212,10 +217,8 @@ public class USSDService {
         return new FindUSSDNodeResponse(selectedNode, reason);
     }
 
->>>>>>> Stashed changes
     //function to find the node
     public boolean findNode(int nodeId, boolean first) {
-
         if (!first) {
             // Find the node in ussdNodes list by its ID
             Optional<USSDNode> optionalNode = ussdNodes.stream()
@@ -230,7 +233,6 @@ public class USSDService {
                 .filter(node -> node.getId() == nodeId && node.getParent() == -1)
                 .findFirst();
 
-
         return optionalNode.isPresent();
     }
 
@@ -242,9 +244,7 @@ public class USSDService {
                 .filter(node -> node.getId() == nodeId && node.isTerminal() == true)
                 .findFirst();
 
-
         return optionalNode.isPresent();
     }
-
 
 }
