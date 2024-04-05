@@ -31,7 +31,8 @@ public class USSDService {
             ussdNodes = mapper.readValue(inputStream, new TypeReference<List<USSDNode>>() {
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            ussdNodes = new ArrayList<>();
+            log.error("system|encountered exception {}", e.getMessage());
         }
     }
 
